@@ -2,7 +2,6 @@ const getScraper = require("./scrapers/scraperSelector");
 
 async function test(url) {
   try {
-    console.log("Scraping...");
     const scraper = getScraper(url);
     const price = await scraper.scrapePrice(url);
     console.log(price);
@@ -11,7 +10,10 @@ async function test(url) {
   }
 }
 
-const testURL = new URL(
-  "https://store.steampowered.com/app/1809540/Nine_Sols/",
-);
-test(testURL);
+const testURLs = [
+  "https://www.homedepot.com/p/Milwaukee-M18-18-Volt-Lithium-Ion-XC-Extended-Capacity-5-0-Ah-Battery-Pack-2-Pack-48-11-1852/205783065",
+  "https://www.homedepot.com/p/Traeger-Pro-575-Wifi-Pellet-Grill-and-Smoker-in-Black-TFB57GLE/307301426",
+];
+testURLs.forEach((url) => {
+  test(new URL(url));
+});
