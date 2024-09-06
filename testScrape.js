@@ -11,8 +11,7 @@ async function test(url) {
 }
 
 const testURLs = [
-  "https://www.homedepot.com/p/Milwaukee-M18-18-Volt-Lithium-Ion-XC-Extended-Capacity-5-0-Ah-Battery-Pack-2-Pack-48-11-1852/205783065",
-  "https://www.homedepot.com/p/Traeger-Pro-575-Wifi-Pellet-Grill-and-Smoker-in-Black-TFB57GLE/307301426",
+  "https://www.bestbuy.com/site/nordictrack-t-series-8-5-s-treadmill-black/6545964.p?skuId=6545964",
 ];
 testURLs.forEach((url) => {
   test(new URL(url));

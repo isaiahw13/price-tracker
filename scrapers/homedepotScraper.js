@@ -1,6 +1,8 @@
 const cheerio = require("cheerio");
 const axios = require("axios");
 
+const SITE = "The Home Depot";
+
 async function scrapePrice(url) {
   try {
     //Get page html and extract price element
@@ -19,9 +21,9 @@ async function scrapePrice(url) {
       .text();
     const price = Number(dollars) + Number(cents) / 100;
     //Return parsed price value
-    return price;
+    return { price: price, site: SITE };
   } catch (error) {
-    console.error(`Error scraping The Home Depot:`, error.message);
+    console.error(`Error scraping ${SITE}:`, error.message);
   }
 }
 

@@ -15,7 +15,13 @@ fs.readdirSync(__dirname).forEach((scraper) => {
 
 //match scraper with domain name
 module.exports = function getScraper(url) {
-  let domain = url.hostname.split(".")[1];
+  let domain = url.hostname.split(".");
+  //handle urls without 'www'
+  if (domain[0] != "www") {
+    domain = domain[0];
+  } else {
+    domain = domain[1];
+  }
   const scraper = scrapers[`${domain}Scraper`];
   if (!scraper) {
     throw new Error(`No scraper found for site: ${domain}`);

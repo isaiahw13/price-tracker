@@ -1,6 +1,8 @@
 const cheerio = require("cheerio");
 const axios = require("axios");
 
+const SITE = "IKEA";
+
 async function scrapePrice(url) {
   try {
     //Get page html and extract price element
@@ -14,9 +16,9 @@ async function scrapePrice(url) {
     const cents = $(".pip-temp-price__decimal").first().text().slice(1);
     const price = Number(dollars) + Number(cents) / 100;
     //Return parsed price value
-    return price;
+    return { price: price, site: SITE };
   } catch (error) {
-    console.error(`Error scraping IKEA:`, error.message);
+    console.error(`Error scraping ${SITE}:`, error.message);
   }
 }
 
